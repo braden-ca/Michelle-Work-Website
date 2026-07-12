@@ -54,7 +54,7 @@ export default function Home() {
               <img
                 src={siteConfig.headshot}
                 alt={siteConfig.name}
-                className="h-full w-full object-cover grayscale"
+                className="h-full w-full object-cover"
               />
             </div>
             <h2 className="mt-6 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-neutral-500">

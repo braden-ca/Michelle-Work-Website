@@ -14,7 +14,7 @@ export default function AboutPage() {
           <img
             src={siteConfig.headshot}
             alt={siteConfig.name}
-            className="h-40 w-40 shrink-0 rounded-full object-cover grayscale ring-1 ring-neutral-200"
+            className="h-40 w-40 shrink-0 rounded-full object-cover ring-1 ring-neutral-200"
           />
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
