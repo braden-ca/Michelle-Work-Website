@@ -279,11 +279,11 @@ export default function DocumentUploadPage() {
           </section>
         ))}
 
-        <section className="rounded-2xl border border-neutral-900 bg-neutral-950 p-6 text-white sm:p-8">
-          <h2 className="border-b border-neutral-800 pb-3 text-lg font-semibold tracking-tight">
+        <section className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <h2 className="border-b border-neutral-100 pb-3 text-lg font-semibold tracking-tight text-neutral-900">
             Agreement to Terms
           </h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-neutral-300">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-neutral-600">
             <li>Do not make any significant financial purchases during the loan process.</li>
             <li>
               A final credit check will be performed prior to close; no new debt or credit
@@ -293,28 +293,24 @@ export default function DocumentUploadPage() {
           </ul>
 
           <div className="mt-6 max-w-md">
-            <Field
-              label="Please sign below (type your full legal name)"
-              required
-              labelClass="text-neutral-300"
-            >
+            <Field label="Please sign below (type your full legal name)" required>
               <input
                 type="text"
                 required
                 value={signature}
                 onChange={(e) => setSignature(e.target.value)}
                 placeholder="Full legal name"
-                className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 font-serif text-base italic text-white placeholder:text-neutral-500 focus:border-white focus:outline-none focus:ring-1 focus:ring-white"
+                className={`${inputClass} font-serif text-base italic`}
               />
             </Field>
           </div>
 
-          <label className="mt-5 flex items-start gap-2.5 text-sm text-neutral-300">
+          <label className="mt-5 flex items-start gap-2.5 text-sm text-neutral-700">
             <input
               type="checkbox"
               checked={agreedToTerms}
               onChange={(e) => setAgreedToTerms(e.target.checked)}
-              className="mt-0.5 h-4 w-4 accent-white"
+              className="mt-0.5 h-4 w-4 accent-neutral-900"
             />
             I Accept the terms above and certify the information provided is accurate.
           </label>
