@@ -67,9 +67,9 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
   const atLimit = entries.filter((e) => e.status !== "error").length >= category.maxFiles;
 
   return (
-    <div className="rounded-xl border border-slate-200 p-4">
+    <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 transition-colors hover:border-slate-300">
       <h4 className="text-sm font-semibold text-slate-900">{category.label}</h4>
-      {category.note && <p className="mt-0.5 text-xs text-slate-500">{category.note}</p>}
+      {category.note && <p className="mt-0.5 text-xs leading-5 text-slate-600">{category.note}</p>}
 
       <label
         onDragOver={(e) => {
@@ -83,7 +83,7 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
           if (!atLimit) handleFiles(e.dataTransfer.files);
         }}
         className={`mt-3 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed px-4 py-6 text-center text-xs transition-colors ${
-          dragActive ? "border-amber-500 bg-amber-50" : "border-slate-300 bg-slate-50"
+          dragActive ? "border-amber-500 bg-amber-50" : "border-slate-300 bg-white hover:border-amber-300"
         } ${atLimit ? "pointer-events-none opacity-50" : ""}`}
       >
         <span className="font-medium text-slate-700">
@@ -105,14 +105,19 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
       {entries.length > 0 && (
         <ul className="mt-3 space-y-1.5">
           {entries.map((entry, i) => (
-            <li key={`${entry.name}-${i}`} className="flex items-center justify-between text-xs">
+            <li
+              key={`${entry.name}-${i}`}
+              className="flex items-center justify-between gap-2 rounded-md bg-white px-2.5 py-1.5 text-xs"
+            >
               <span className="truncate text-slate-700">{entry.name}</span>
               {entry.status === "uploading" && (
-                <span className="text-amber-600">Uploading…</span>
+                <span className="shrink-0 font-medium text-amber-600">Uploading…</span>
               )}
-              {entry.status === "done" && <span className="text-green-600">Uploaded</span>}
+              {entry.status === "done" && (
+                <span className="shrink-0 font-medium text-green-600">Uploaded</span>
+              )}
               {entry.status === "error" && (
-                <span className="text-red-600">Failed — try again</span>
+                <span className="shrink-0 font-medium text-red-600">Failed — try again</span>
               )}
             </li>
           ))}

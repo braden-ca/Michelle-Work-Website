@@ -53,7 +53,7 @@ export default async function AdminPage() {
         {submissions.map((sub) => (
           <details
             key={sub.submissionId}
-            className="rounded-2xl border border-slate-200 p-6 open:shadow-sm"
+            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
           >
             <summary className="flex cursor-pointer flex-wrap items-center justify-between gap-2">
               <span className="font-semibold text-slate-900">

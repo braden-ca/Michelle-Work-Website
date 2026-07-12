@@ -33,28 +33,30 @@ export default function AdminLogin() {
 
   return (
     <div className="mx-auto flex max-w-sm flex-col items-center px-6 py-24">
-      <h1 className="text-2xl font-bold text-slate-900">Admin Login</h1>
-      <p className="mt-2 text-center text-sm text-slate-600">
-        Enter the admin password to view submitted applications.
-      </p>
-      <form onSubmit={handleSubmit} className="mt-6 w-full space-y-4">
-        <input
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
-        />
-        {error && <p className="text-sm text-red-600">{error}</p>}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-400 disabled:opacity-50"
-        >
-          {loading ? "Checking…" : "Log In"}
-        </button>
-      </form>
+      <div className="w-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+        <h1 className="text-2xl font-bold text-slate-900">Admin Login</h1>
+        <p className="mt-2 text-sm text-slate-600">
+          Enter the admin password to view submitted applications.
+        </p>
+        <form onSubmit={handleSubmit} className="mt-6 w-full space-y-4 text-left">
+          <input
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+          />
+          {error && <p className="text-sm text-red-600">{error}</p>}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 disabled:opacity-50"
+          >
+            {loading ? "Checking…" : "Log In"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

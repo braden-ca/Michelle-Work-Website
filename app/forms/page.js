@@ -33,7 +33,7 @@ export default function FormsPage() {
         {forms.map((form) => (
           <div
             key={form.title}
-            className="flex flex-col justify-between gap-3 rounded-2xl border border-slate-200 p-6 sm:flex-row sm:items-center"
+            className="flex flex-col justify-between gap-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:items-center"
           >
             <div>
               <h2 className="font-semibold text-slate-900">{form.title}</h2>

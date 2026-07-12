@@ -68,12 +68,17 @@ export default function DocumentUploadPage() {
 
   if (status === "success") {
     return (
-      <div className="mx-auto max-w-2xl px-6 py-24 text-center">
-        <h1 className="text-2xl font-bold text-slate-900">Thank You!</h1>
-        <p className="mt-3 text-slate-600">
-          Your documents have been received. {siteConfig.name} will review your application and
-          be in touch shortly.
-        </p>
+      <div className="mx-auto max-w-2xl px-6 py-24">
+        <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-2xl text-green-600">
+            ✓
+          </div>
+          <h1 className="mt-5 text-2xl font-bold text-slate-900">Thank You!</h1>
+          <p className="mt-3 text-slate-600">
+            Your documents have been received. {siteConfig.name} will review your application and
+            be in touch shortly.
+          </p>
+        </div>
       </div>
     );
   }
@@ -86,7 +91,7 @@ export default function DocumentUploadPage() {
         secure online portal.
       </p>
 
-      <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm text-slate-700">
+      <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm leading-6 text-slate-700">
         <h2 className="font-semibold text-slate-900">Begin Your Application in Three Easy Steps</h2>
         <ol className="mt-3 list-decimal space-y-2 pl-5">
           <li>Complete the Loan Application PDF (see the Forms page) and upload it below.</li>
@@ -109,10 +114,12 @@ export default function DocumentUploadPage() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-10 space-y-12">
-        <section>
-          <h2 className="text-lg font-semibold text-slate-900">Borrower Information</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <form onSubmit={handleSubmit} className="mt-10 space-y-8">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+            Borrower Information
+          </h2>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
             <Field label="First Name" required>
               <input
                 type="text"
@@ -152,9 +159,11 @@ export default function DocumentUploadPage() {
           </div>
         </section>
 
-        <section>
-          <h2 className="text-lg font-semibold text-slate-900">Property Address</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+            Property Address
+          </h2>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
             <Field label="Address Line 1" className="sm:col-span-2">
               <input
                 type="text"
@@ -196,9 +205,11 @@ export default function DocumentUploadPage() {
           </div>
         </section>
 
-        <section>
-          <h2 className="text-lg font-semibold text-slate-900">Loan &amp; Transaction Details</h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+            Loan &amp; Transaction Details
+          </h2>
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
             <Field label="Loan Amount">
               <input
                 type="text"
@@ -247,9 +258,14 @@ export default function DocumentUploadPage() {
         </section>
 
         {uploadSections.map((group) => (
-          <section key={group.section}>
-            <h2 className="text-lg font-semibold text-slate-900">{group.section}</h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <section
+            key={group.section}
+            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+          >
+            <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+              {group.section}
+            </h2>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
               {group.categories.map((category) => (
                 <UploadSlot
                   key={category.id}
@@ -262,9 +278,11 @@ export default function DocumentUploadPage() {
           </section>
         ))}
 
-        <section className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-          <h2 className="text-lg font-semibold text-slate-900">Agreement to Terms</h2>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-slate-600">
+        <section className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6 shadow-sm sm:p-8">
+          <h2 className="border-b border-amber-100 pb-3 text-lg font-semibold text-slate-900">
+            Agreement to Terms
+          </h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
             <li>Do not make any significant financial purchases during the loan process.</li>
             <li>
               A final credit check will be performed prior to close; no new debt or credit
@@ -273,7 +291,7 @@ export default function DocumentUploadPage() {
             <li>Please avoid changes in employment or movement of assets during the loan process.</li>
           </ul>
 
-          <div className="mt-6">
+          <div className="mt-6 max-w-md">
             <Field label="Please sign below (type your full legal name)" required>
               <input
                 type="text"
@@ -281,17 +299,17 @@ export default function DocumentUploadPage() {
                 value={signature}
                 onChange={(e) => setSignature(e.target.value)}
                 placeholder="Full legal name"
-                className={`${inputClass} font-serif italic`}
+                className={`${inputClass} bg-white font-serif text-base italic`}
               />
             </Field>
           </div>
 
-          <label className="mt-4 flex items-start gap-2 text-sm text-slate-700">
+          <label className="mt-5 flex items-start gap-2.5 text-sm text-slate-700">
             <input
               type="checkbox"
               checked={agreedToTerms}
               onChange={(e) => setAgreedToTerms(e.target.checked)}
-              className="mt-0.5"
+              className="mt-0.5 h-4 w-4 accent-amber-500"
             />
             I Accept the terms above and certify the information provided is accurate.
           </label>

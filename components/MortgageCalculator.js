@@ -30,7 +30,7 @@ export default function MortgageCalculator() {
   }, [homePrice, downPayment, rate, termYears, taxesInsurance]);
 
   return (
-    <div className="grid gap-8 rounded-2xl border border-slate-200 p-6 sm:p-8 md:grid-cols-2">
+    <div className="grid gap-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 md:grid-cols-2">
       <div className="space-y-5">
         <NumberField label="Home Price" value={homePrice} onChange={setHomePrice} prefix="$" />
         <NumberField
