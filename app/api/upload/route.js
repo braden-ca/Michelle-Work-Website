@@ -1,0 +1,36 @@
+import { handleUpload } from "@vercel/blob/client";
+import { NextResponse } from "next/server";
+
+export async function POST(request) {
+  const body = await request.json();
+
+  try {
+    const jsonResponse = await handleUpload({
+      body,
+      request,
+      onBeforeGenerateToken: async (pathname) => {
+        return {
+          allowedContentTypes: [
+            "application/pdf",
+            "image/jpeg",
+            "image/png",
+            "image/heic",
+            "image/webp",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          ],
+          addRandomSuffix: true,
+          maximumSizeInBytes: 25 * 1024 * 1024,
+        };
+      },
+      onUploadCompleted: async () => {
+        // No database — file metadata is recorded client-side and submitted
+        // as part of the submission summary in /api/submit.
+      },
+    });
+
+    return NextResponse.json(jsonResponse);
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 400 });
+  }
+}
