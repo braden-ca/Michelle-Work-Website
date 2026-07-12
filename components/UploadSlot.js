@@ -67,9 +67,9 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
   const atLimit = entries.filter((e) => e.status !== "error").length >= category.maxFiles;
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 transition-colors hover:border-slate-300">
-      <h4 className="text-sm font-semibold text-slate-900">{category.label}</h4>
-      {category.note && <p className="mt-0.5 text-xs leading-5 text-slate-600">{category.note}</p>}
+    <div className="rounded-xl border border-neutral-200 bg-neutral-50 p-4 transition-colors hover:border-neutral-300">
+      <h4 className="text-sm font-semibold text-neutral-900">{category.label}</h4>
+      {category.note && <p className="mt-0.5 text-xs leading-5 text-neutral-500">{category.note}</p>}
 
       <label
         onDragOver={(e) => {
@@ -82,14 +82,14 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
           setDragActive(false);
           if (!atLimit) handleFiles(e.dataTransfer.files);
         }}
-        className={`mt-3 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed px-4 py-6 text-center text-xs transition-colors ${
-          dragActive ? "border-amber-500 bg-amber-50" : "border-slate-300 bg-white hover:border-amber-300"
+        className={`mt-3 flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed px-4 py-6 text-center text-xs transition-colors ${
+          dragActive ? "border-neutral-900 bg-neutral-100" : "border-neutral-300 bg-white hover:border-neutral-900"
         } ${atLimit ? "pointer-events-none opacity-50" : ""}`}
       >
-        <span className="font-medium text-slate-700">
+        <span className="font-medium text-neutral-700">
           Drag &amp; Drop Files, or Browse Files
         </span>
-        <span className="mt-1 text-slate-500">Up to {category.maxFiles} files</span>
+        <span className="mt-1 text-neutral-400">Up to {category.maxFiles} files</span>
         <input
           type="file"
           multiple
@@ -107,17 +107,17 @@ export default function UploadSlot({ category, submissionId, onFilesChange }) {
           {entries.map((entry, i) => (
             <li
               key={`${entry.name}-${i}`}
-              className="flex items-center justify-between gap-2 rounded-md bg-white px-2.5 py-1.5 text-xs"
+              className="flex items-center justify-between gap-2 rounded-md border border-neutral-200 bg-white px-2.5 py-1.5 text-xs"
             >
-              <span className="truncate text-slate-700">{entry.name}</span>
+              <span className="truncate text-neutral-700">{entry.name}</span>
               {entry.status === "uploading" && (
-                <span className="shrink-0 font-medium text-amber-600">Uploading…</span>
+                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-neutral-500">Uploading</span>
               )}
               {entry.status === "done" && (
-                <span className="shrink-0 font-medium text-green-600">Uploaded</span>
+                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-neutral-900">✓ Uploaded</span>
               )}
               {entry.status === "error" && (
-                <span className="shrink-0 font-medium text-red-600">Failed — try again</span>
+                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-red-600">Failed — retry</span>
               )}
             </li>
           ))}

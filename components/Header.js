@@ -15,10 +15,15 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-white">
-          {siteConfig.name}
+        <Link href="/" className="flex flex-col leading-none">
+          <span className="text-base font-semibold tracking-tight text-neutral-900">
+            {siteConfig.name}
+          </span>
+          <span className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+            {siteConfig.title}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -26,14 +31,14 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-slate-300 transition-colors hover:text-white"
+              className="text-sm font-medium text-neutral-500 transition-colors hover:text-neutral-900"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href={siteConfig.applyOnlineUrl || "/document-upload"}
-            className="rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400"
+            className="rounded-full bg-neutral-900 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-700"
           >
             Apply Online
           </Link>
@@ -42,7 +47,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="text-slate-200 md:hidden"
+          className="text-sm font-medium text-neutral-700 md:hidden"
           aria-label="Toggle menu"
         >
           {open ? "Close" : "Menu"}
@@ -50,13 +55,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-slate-800 px-6 pb-4 md:hidden">
+        <nav className="flex flex-col gap-1 border-t border-neutral-200 px-6 pb-4 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="py-2 text-sm font-medium text-slate-300 hover:text-white"
+              className="py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900"
             >
               {link.label}
             </Link>
@@ -64,7 +69,7 @@ export default function Header() {
           <Link
             href={siteConfig.applyOnlineUrl || "/document-upload"}
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-amber-500 px-5 py-2 text-center text-sm font-semibold text-slate-900"
+            className="mt-2 rounded-full bg-neutral-900 px-5 py-2 text-center text-sm font-semibold text-white"
           >
             Apply Online
           </Link>

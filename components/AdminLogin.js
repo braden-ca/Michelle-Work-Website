@@ -33,9 +33,12 @@ export default function AdminLogin() {
 
   return (
     <div className="mx-auto flex max-w-sm flex-col items-center px-6 py-24">
-      <div className="w-full rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-        <h1 className="text-2xl font-bold text-slate-900">Admin Login</h1>
-        <p className="mt-2 text-sm text-slate-600">
+      <div className="w-full rounded-2xl border border-neutral-200 bg-white p-8 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-400">
+          Restricted
+        </p>
+        <h1 className="mt-3 text-2xl font-semibold tracking-tight text-neutral-900">Admin Login</h1>
+        <p className="mt-2 text-sm text-neutral-500">
           Enter the admin password to view submitted applications.
         </p>
         <form onSubmit={handleSubmit} className="mt-6 w-full space-y-4 text-left">
@@ -45,13 +48,13 @@ export default function AdminLogin() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
           />
           {error && <p className="text-sm text-red-600">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-full bg-amber-500 px-5 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 disabled:opacity-50"
+            className="w-full rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-700 disabled:opacity-50"
           >
             {loading ? "Checking…" : "Log In"}
           </button>

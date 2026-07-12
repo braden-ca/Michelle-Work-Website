@@ -30,8 +30,8 @@ export default function MortgageCalculator() {
   }, [homePrice, downPayment, rate, termYears, taxesInsurance]);
 
   return (
-    <div className="grid gap-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 md:grid-cols-2">
-      <div className="space-y-5">
+    <div className="grid gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 md:grid-cols-2">
+      <div className="space-y-5 bg-white p-6 sm:p-8">
         <NumberField label="Home Price" value={homePrice} onChange={setHomePrice} prefix="$" />
         <NumberField
           label="Down Payment"
@@ -41,11 +41,11 @@ export default function MortgageCalculator() {
         />
         <NumberField label="Interest Rate" value={rate} onChange={setRate} suffix="%" step={0.01} />
         <label className="block text-sm">
-          <span className="mb-1 block font-medium text-slate-700">Loan Term</span>
+          <span className="mb-1.5 block font-medium text-neutral-700">Loan Term</span>
           <select
             value={termYears}
             onChange={(e) => setTermYears(Number(e.target.value))}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"
+            className="w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900"
           >
             <option value={30}>30 years</option>
             <option value={20}>20 years</option>
@@ -61,20 +61,27 @@ export default function MortgageCalculator() {
         />
       </div>
 
-      <div className="flex flex-col justify-center rounded-xl bg-slate-900 p-6 text-white">
-        <p className="text-sm text-slate-400">Loan Amount</p>
-        <p className="text-2xl font-semibold">{currency(principal)}</p>
+      <div className="relative flex flex-col justify-center overflow-hidden bg-neutral-950 p-8 text-white">
+        <div className="tech-grid pointer-events-none absolute inset-0 opacity-60" />
+        <div className="relative">
+          <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-500">
+            Loan Amount
+          </p>
+          <p className="mt-1 text-2xl font-semibold">{currency(principal)}</p>
 
-        <p className="mt-6 text-sm text-slate-400">Estimated Monthly Payment</p>
-        <p className="text-4xl font-bold text-amber-400">{currency(monthlyTotal)}</p>
-        <p className="mt-1 text-xs text-slate-400">
-          Principal & interest: {currency(monthlyPI)} + taxes/insurance estimate:{" "}
-          {currency(Number(taxesInsurance || 0))}
-        </p>
-        <p className="mt-6 text-xs text-slate-500">
-          This is an estimate for informational purposes only and does not represent an offer of
-          credit. Contact Michelle for an accurate, personalized quote.
-        </p>
+          <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-neutral-500">
+            Estimated Monthly Payment
+          </p>
+          <p className="mt-1 text-5xl font-semibold tracking-tight">{currency(monthlyTotal)}</p>
+          <p className="mt-2 text-xs text-neutral-400">
+            Principal &amp; interest {currency(monthlyPI)} + taxes/insurance{" "}
+            {currency(Number(taxesInsurance || 0))}
+          </p>
+          <p className="mt-8 text-xs leading-5 text-neutral-500">
+            An estimate for informational purposes only; not an offer of credit. Contact Michelle
+            for an accurate, personalized quote.
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -83,17 +90,17 @@ export default function MortgageCalculator() {
 function NumberField({ label, value, onChange, prefix, suffix, step = 1 }) {
   return (
     <label className="block text-sm">
-      <span className="mb-1 block font-medium text-slate-700">{label}</span>
-      <div className="flex items-center rounded-lg border border-slate-300 px-3 py-2 focus-within:border-amber-500 focus-within:ring-1 focus-within:ring-amber-500">
-        {prefix && <span className="mr-1 text-slate-500">{prefix}</span>}
+      <span className="mb-1.5 block font-medium text-neutral-700">{label}</span>
+      <div className="flex items-center rounded-lg border border-neutral-300 px-3 py-2 focus-within:border-neutral-900 focus-within:ring-1 focus-within:ring-neutral-900">
+        {prefix && <span className="mr-1 text-neutral-400">{prefix}</span>}
         <input
           type="number"
           step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full text-sm text-slate-900 focus:outline-none"
+          className="w-full text-sm text-neutral-900 focus:outline-none"
         />
-        {suffix && <span className="ml-1 text-slate-500">{suffix}</span>}
+        {suffix && <span className="ml-1 text-neutral-400">{suffix}</span>}
       </div>
     </label>
   );

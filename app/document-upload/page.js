@@ -69,12 +69,12 @@ export default function DocumentUploadPage() {
   if (status === "success") {
     return (
       <div className="mx-auto max-w-2xl px-6 py-24">
-        <div className="rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-2xl text-green-600">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-10 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-neutral-900 text-2xl text-white">
             ✓
           </div>
-          <h1 className="mt-5 text-2xl font-bold text-slate-900">Thank You!</h1>
-          <p className="mt-3 text-slate-600">
+          <h1 className="mt-5 text-2xl font-semibold tracking-tight text-neutral-900">Thank You</h1>
+          <p className="mt-3 text-neutral-500">
             Your documents have been received. {siteConfig.name} will review your application and
             be in touch shortly.
           </p>
@@ -85,14 +85,15 @@ export default function DocumentUploadPage() {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
-      <h1 className="text-3xl font-bold text-slate-900">Secure Document Form</h1>
-      <p className="mt-3 text-slate-600">
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-neutral-400">Secure Portal</p>
+      <h1 className="mt-4 text-4xl font-semibold tracking-tight text-neutral-900">Secure Document Form</h1>
+      <p className="mt-3 text-neutral-500">
         Thank you for your interest in applying for financing with {siteConfig.company} using our
         secure online portal.
       </p>
 
-      <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-sm leading-6 text-slate-700">
-        <h2 className="font-semibold text-slate-900">Begin Your Application in Three Easy Steps</h2>
+      <div className="mt-8 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 text-sm leading-6 text-neutral-600">
+        <h2 className="font-semibold text-neutral-900">Begin Your Application in Three Easy Steps</h2>
         <ol className="mt-3 list-decimal space-y-2 pl-5">
           <li>Complete the Loan Application PDF (see the Forms page) and upload it below.</li>
           <li>Download and complete the Borrower Authorization Form, then upload it below.</li>
@@ -115,8 +116,8 @@ export default function DocumentUploadPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="mt-10 space-y-8">
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+        <section className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <h2 className="border-b border-neutral-100 pb-3 text-lg font-semibold tracking-tight text-neutral-900">
             Borrower Information
           </h2>
           <div className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -159,8 +160,8 @@ export default function DocumentUploadPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+        <section className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <h2 className="border-b border-neutral-100 pb-3 text-lg font-semibold tracking-tight text-neutral-900">
             Property Address
           </h2>
           <div className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -205,8 +206,8 @@ export default function DocumentUploadPage() {
           </div>
         </section>
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+        <section className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <h2 className="border-b border-neutral-100 pb-3 text-lg font-semibold tracking-tight text-neutral-900">
             Loan &amp; Transaction Details
           </h2>
           <div className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -260,9 +261,9 @@ export default function DocumentUploadPage() {
         {uploadSections.map((group) => (
           <section
             key={group.section}
-            className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+            className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
           >
-            <h2 className="border-b border-slate-100 pb-3 text-lg font-semibold text-slate-900">
+            <h2 className="border-b border-neutral-100 pb-3 text-lg font-semibold tracking-tight text-neutral-900">
               {group.section}
             </h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -278,11 +279,11 @@ export default function DocumentUploadPage() {
           </section>
         ))}
 
-        <section className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6 shadow-sm sm:p-8">
-          <h2 className="border-b border-amber-100 pb-3 text-lg font-semibold text-slate-900">
+        <section className="rounded-2xl border border-neutral-900 bg-neutral-950 p-6 text-white sm:p-8">
+          <h2 className="border-b border-neutral-800 pb-3 text-lg font-semibold tracking-tight">
             Agreement to Terms
           </h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-700">
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-neutral-300">
             <li>Do not make any significant financial purchases during the loan process.</li>
             <li>
               A final credit check will be performed prior to close; no new debt or credit
@@ -292,41 +293,45 @@ export default function DocumentUploadPage() {
           </ul>
 
           <div className="mt-6 max-w-md">
-            <Field label="Please sign below (type your full legal name)" required>
+            <Field
+              label="Please sign below (type your full legal name)"
+              required
+              labelClass="text-neutral-300"
+            >
               <input
                 type="text"
                 required
                 value={signature}
                 onChange={(e) => setSignature(e.target.value)}
                 placeholder="Full legal name"
-                className={`${inputClass} bg-white font-serif text-base italic`}
+                className="w-full rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 font-serif text-base italic text-white placeholder:text-neutral-500 focus:border-white focus:outline-none focus:ring-1 focus:ring-white"
               />
             </Field>
           </div>
 
-          <label className="mt-5 flex items-start gap-2.5 text-sm text-slate-700">
+          <label className="mt-5 flex items-start gap-2.5 text-sm text-neutral-300">
             <input
               type="checkbox"
               checked={agreedToTerms}
               onChange={(e) => setAgreedToTerms(e.target.checked)}
-              className="mt-0.5 h-4 w-4 accent-amber-500"
+              className="mt-0.5 h-4 w-4 accent-white"
             />
             I Accept the terms above and certify the information provided is accurate.
           </label>
         </section>
 
         {errorMessage && (
-          <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">{errorMessage}</p>
+          <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{errorMessage}</p>
         )}
 
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full rounded-full bg-amber-500 px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 disabled:opacity-50"
+          className="w-full rounded-full bg-neutral-900 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-700 disabled:opacity-50"
         >
           {status === "submitting" ? "Submitting…" : "Submit Form"}
         </button>
-        <p className="text-center text-xs text-slate-500">
+        <p className="text-center text-xs text-neutral-400">
           Please wait for the confirmation message after submitting. All information submitted is
           stored securely.
         </p>
@@ -336,12 +341,12 @@ export default function DocumentUploadPage() {
 }
 
 const inputClass =
-  "w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500";
+  "w-full rounded-lg border border-neutral-300 px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none focus:ring-1 focus:ring-neutral-900";
 
-function Field({ label, required, children, className = "" }) {
+function Field({ label, required, children, className = "", labelClass = "text-neutral-700" }) {
   return (
     <label className={`block text-sm ${className}`}>
-      <span className="mb-1 block font-medium text-slate-700">
+      <span className={`mb-1.5 block font-medium ${labelClass}`}>
         {label} {required && <span className="text-red-500">*</span>}
       </span>
       {children}
