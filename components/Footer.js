@@ -8,11 +8,14 @@ export default function Footer() {
     <footer className="border-t border-neutral-800 bg-neutral-950 text-neutral-400">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 sm:grid-cols-3">
         <div>
-          <p className="text-base font-semibold text-white">{siteConfig.name}</p>
-          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500">
-            {siteConfig.company}
-          </p>
-          <p className="mt-4 text-sm">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={siteConfig.logo}
+            alt={siteConfig.company}
+            className="h-8 w-auto brightness-0 invert"
+          />
+          <p className="mt-4 text-base font-semibold text-white">{siteConfig.name}</p>
+          <p className="mt-3 text-sm">
             <a href={siteConfig.phoneHref} className="transition-colors hover:text-white">
               {siteConfig.phone}
             </a>

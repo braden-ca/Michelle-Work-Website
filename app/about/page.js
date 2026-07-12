@@ -17,10 +17,13 @@ export default function AboutPage() {
             className="h-40 w-40 shrink-0 rounded-full object-cover grayscale ring-1 ring-neutral-200"
           />
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-neutral-400">
-              {siteConfig.company}
-            </p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-900">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={siteConfig.logo}
+              alt={siteConfig.company}
+              className="mx-auto h-8 w-auto sm:mx-0"
+            />
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-neutral-900">
               {siteConfig.name}
             </h1>
             <p className="mt-2 text-lg text-neutral-500">{siteConfig.title}</p>

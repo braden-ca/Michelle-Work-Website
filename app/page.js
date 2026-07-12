@@ -16,10 +16,13 @@ export default function Home() {
         />
         <div className="relative mx-auto grid max-w-6xl gap-14 px-6 py-24 sm:py-32 md:grid-cols-[1fr_320px] md:items-center">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-neutral-400">
-              {siteConfig.company}
-            </p>
-            <h1 className="mt-5 text-5xl font-semibold tracking-tight sm:text-7xl">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={siteConfig.logo}
+              alt={siteConfig.company}
+              className="h-10 w-auto brightness-0 invert sm:h-12"
+            />
+            <h1 className="mt-8 text-5xl font-semibold tracking-tight sm:text-7xl">
               {siteConfig.name}
             </h1>
             <p className="mt-4 text-xl text-neutral-300">{siteConfig.title}</p>
